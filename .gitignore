@@ -2,3 +2,4 @@ node_modules
 .env
 emailswagger.yaml
 json-test.json
+config.json
