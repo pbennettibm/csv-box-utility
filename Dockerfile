@@ -25,4 +25,4 @@ RUN chown -R node:root /app
 EXPOSE 3001 
 
 #Start app 
-CMD ["npm", "start"]
+CMD ["npm", "run", "watch"]

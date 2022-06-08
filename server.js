@@ -3,12 +3,13 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-var reload = require('reload');
+const http = require('http');
+const reload = require('reload');
 const app = express();
-const port = process.env.PORT || 3001;
 
 const directoryPath = path.join(__dirname, 'downloads');
 
+app.set('port', process.env.PORT || 3001);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -64,9 +65,11 @@ app.get('/download/:filename', (req, res) => {
   res.download(`${directoryPath}/${req.params.filename}`);
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+const server = http.createServer(app);
 
 // Reload code here
-reload(app)
+reload(app);
+
+server.listen(app.get('port'), function () {
+  console.log('Web server listening on port ' + app.get('port'));
+});
