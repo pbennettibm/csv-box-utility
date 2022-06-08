@@ -64,19 +64,9 @@ app.get('/download/:filename', (req, res) => {
   res.download(`${directoryPath}/${req.params.filename}`);
 });
 
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+
 // Reload code here
 reload(app)
-  .then(function (reloadReturned) {
-    // reloadReturned is documented in the returns API in the README
-
-    // Reload started, start web server
-    app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
-    });
-  })
-  .catch(function (err) {
-    console.error(
-      'Reload could not start, could not start server/sample app',
-      err
-    );
-  });
