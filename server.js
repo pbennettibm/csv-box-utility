@@ -46,7 +46,7 @@ app.get('/', async (req, res) => {
       res.status(500).end();
     } else {
       files.forEach((file) => {
-        html += `<a href="/download:${file}">${file}</a>
+        html += `<a href="/download/${file}">${file}</a>
           <br>
           <br>`;
       });
@@ -56,9 +56,9 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.get('/download', (req, res) => {
-  console.log(req.params)
-  res.download(filePath);
+app.get('/download/:filename', (req, res) => {
+  console.log(req.params.filename)
+  res.download(`${directoryPath}/${req.params.filename}`);
 });
 
 app.listen(port, () => {
