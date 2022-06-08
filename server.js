@@ -1,9 +1,7 @@
 // const Box = require('./box-sdk');
 // const axios = require('axios');
 const express = require('express');
-require('dotenv').config();
 const fs = require('fs');
-const fsPromise = ('fs-promise');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3001;
